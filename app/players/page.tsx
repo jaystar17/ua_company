@@ -29,7 +29,17 @@ export default function HomePage() {
   };
 
   return (
-    <main className="p-4 max-w-6xl mx-auto text-gray-900">
+    <main className="p-4 max-w-6xl mx-auto text-white-900">
+      {/* ✅ 메인으로 가기 버튼 */}
+      <div className="mb-4">
+        <Link
+          href="/"
+          className="text-sm text-blue-600 hover:underline font-medium"
+        >
+          ← 메인으로
+        </Link>
+      </div>
+
       <div className="mb-6">
         <h1 className="text-3xl font-bold mb-2">📋 선수 명단</h1>
         <p className="text-gray-700 font-medium text-lg">
@@ -59,14 +69,14 @@ export default function HomePage() {
             <p className="text-sm text-gray-700">팀: {p.team}</p>
             <p className="text-sm text-gray-700">포지션: {p.position}</p>
             <p className="text-sm text-gray-700">등번호: {p.number}</p>
-            <p className="text-sm font-medium mt-2">
+            <p className="text-sm font-medium mt-15">
               상태:{" "}
               <span
                 className={
-                  p.status === '1군' ? 'text-green-700' :
-                  p.status === '2군' ? 'text-blue-700' :
-                  p.status === '상무' ? 'text-purple-700' :
-                  'text-red-700'
+                  p.status === '1군' ? 'text-sm font-black text-green-700' :
+                  p.status === '2군' ? 'text-sm font-black text-blue-700' :
+                  p.status === '상무' ? 'text-sm font-black text-purple-700' :
+                  'text-sm font-black text-red-700'
                 }
               >
                 {p.status}

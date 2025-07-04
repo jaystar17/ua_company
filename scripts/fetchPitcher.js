@@ -36,11 +36,11 @@ export async function fetchPitcherStats({ name, kboId, year = 2025 }) {
     }
 
     const basicFields = [
-      'team', 'era', 'g', 'w', 'l', 'sv', 'hld', 'wpct',
-      'tbf', 'ip', 'h', 'hr', 'bb', 'hbp', 'so', 'r', 'er'
+      'team', 'era', 'g', 'CG', 'SHO', 'W', 'L', 'SV',
+      'HLD', 'WPCT', 'TBF', 'NP', 'IP', 'H', '2B', '3B', 'HR'
     ];
     const detailFields = [
-      'k9', 'bb9', 'kbb', 'whip', 'avg', 'qs', 'pip', 'gfpct'
+      'SAC', 'SF', 'BB', 'IBB', 'SO', 'WP', 'BK', 'R', 'ER', 'BSV', 'WHIP', 'AVG','QS'
     ];
 
     const basicRecord = Object.fromEntries(basicFields.map((key, i) => [key, basicData[i] ?? null]));

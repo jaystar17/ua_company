@@ -16,20 +16,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/players/page.js"
     ],
-    "/players/[kboId]/page": [
+    "/players/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/players/[kboId]/page.js"
-    ],
-    "/admin/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/admin/page.js"
-    ],
-    "/api/savePlayers/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/savePlayers/route.js"
+      "static/chunks/app/players/[id]/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

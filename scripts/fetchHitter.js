@@ -17,18 +17,32 @@ export async function fetchHitterStats({ name, kboId, year = 2025 }) {
     }, { timeout: 10000 });
 
     const [basicData, detailData] = await page.evaluate(() => {
-      const heading = [...document.querySelectorAll('.player_records h6')]
-        .find(h => h.textContent.includes('2025 성적'));
-      if (!heading) return [[], []];
+  const heading = [...document.querySelectorAll('.player_records h6')]
+    .find(h => h.textContent.includes('2025 성적'));
+  if (!heading) return [[], []];
 
-      const container = heading.closest('.player_records');
-      const tables = container.querySelectorAll('.tbl-type02');
+  const container = heading.closest('.player_records');
+  const tables = container.querySelectorAll('.tbl-type02');
 
-      const getTds = table =>
-        [...table.querySelectorAll('td')].map(td => td.textContent.trim());
+  const getTds = (table) => {
+    if (!table) return [];
 
-      return [getTds(tables[0]), getTds(tables[1])];
-    });
+    const rows = [...table.querySelectorAll('tr')];
+    if (rows.length === 0) return [];
+
+    const bestRow = rows.reduce((a, b) =>
+      a.querySelectorAll('td').length > b.querySelectorAll('td').length ? a : b
+    );
+
+    return [...bestRow.querySelectorAll('td')].map(td => td.textContent.trim());
+  };
+
+  return [
+    getTds(tables[0]),
+    getTds(tables[1])
+  ];
+});
+
 
     if (!basicData || basicData.length === 0 || basicData[0] === '기록이 없습니다.') {
       console.log(`⛔ [타자] ${name} → 1군 성적 없음 (스킵됨)`);
@@ -37,10 +51,10 @@ export async function fetchHitterStats({ name, kboId, year = 2025 }) {
 
     const basicFields = [
       'team', 'avg', 'g', 'pa', 'ab', 'r', 'h', '2b', '3b', 'hr', 'tb', 'rbi',
-      'sb', 'cs', 'sac', 'sf', 'bb', 'ibb', 'hbp', 'so', 'gdp', 'slg', 'obp',
-      'e', 'sbp', 'mh', 'ops', 'risp', 'phba'
+      'sb', 'cs', 'sac', 'sf'
     ];
-    const detailFields = []; // 세부 항목 필요 시 추가
+    const detailFields = ['bb', 'ibb', 'hbp', 'so', 'gdp', 'slg', 'obp',
+      'e', 'sbp', 'mh', 'ops', 'risp', 'phba']; // 세부 항목 필요 시 추가
 
     const basicRecord = Object.fromEntries(basicFields.map((key, i) => [key, basicData[i] ?? null]));
     const detailRecord = Object.fromEntries(detailFields.map((key, i) => [key, detailData[i] ?? null]));
