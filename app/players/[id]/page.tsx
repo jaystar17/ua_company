@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 interface Player {
@@ -16,14 +16,16 @@ interface Article {
   date: string;
 }
 
-export default function PlayerPage({ params }: { params: { id: string } }) {
+export default function PlayerPage() {
+  const params = useParams();
+  const id = decodeURIComponent(params.id as string);
+
   const [player, setPlayer] = useState<Player | null>(null);
   const router = useRouter();
   const [stats, setStats] = useState<Record<string, any> | null>(null);
-  const [latestGame, setLatestGame] = useState<Record<string, any> | null>(null);
-  const [articles, setArticles] = useState<Article[]>([]); // ✅ 뉴스 상태 추가
-
-  const id = decodeURIComponent(params.id);
+  const [latestGame, setLatestGame] = useState<Record<string, any>[] | null>(null);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [futuresStats, setFuturesStats] = useState<Record<string, any> | null>(null);
 
   useEffect(() => {
     fetch('/players.json')
@@ -37,14 +39,16 @@ export default function PlayerPage({ params }: { params: { id: string } }) {
 
           fetch(`/data/${type}_${kboId}.json`)
             .then(res => res.ok ? res.json() : null)
-            .then(setStats);
+            .then(setStats)
+          fetch(`/data/${type}_${kboId}_futures.json`)
+            .then(res => res.ok ? res.json() : null)
+            .then(setFuturesStats);
 
-          fetch(`/gameLogs/${type}_${kboId}_latest.json`)
+          fetch(`/gameLogs/${type}_${kboId}.json`)
             .then(res => res.ok ? res.json() : null)
             .then(setLatestGame)
             .catch(() => setLatestGame(null));
 
-          // ✅ 뉴스 JSON 불러오기
           fetch(`/news/${p.name}.json`)
             .then(res => res.ok ? res.json() : null)
             .then(data => {
@@ -55,6 +59,8 @@ export default function PlayerPage({ params }: { params: { id: string } }) {
         }
       });
   }, [id]);
+
+  const latest = Array.isArray(latestGame) ? latestGame[0] : null;
 
   if (!player) return <div className="p-4">선수 정보를 찾을 수 없습니다.</div>;
 
@@ -71,16 +77,16 @@ export default function PlayerPage({ params }: { params: { id: string } }) {
       <p className="text-sm text-gray-600 mb-4">#{player.number} / {player.position}</p>
 
       {/* 최근 경기 */}
-      {latestGame && (
+      {latest && (
         <div className="mb-6 p-4 border border-gray-200 bg-white rounded-xl shadow-sm">
           <h2 className="text-base font-semibold text-gray-800 mb-3">
-            📅 최근 경기 기록 ({latestGame.date} vs {latestGame.opponent})
+            📅 최근 경기 기록 ({latest.date} vs {latest.opponent})
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border border-gray-300">
               <thead className="bg-gray-100">
                 <tr>
-                  {Object.keys(latestGame)
+                  {Object.keys(latest)
                     .filter(k => k !== 'date' && k !== 'opponent')
                     .map(key => (
                       <th key={key} className="px-2 py-1 border text-xs text-gray-600 font-medium">
@@ -91,7 +97,7 @@ export default function PlayerPage({ params }: { params: { id: string } }) {
               </thead>
               <tbody>
                 <tr className="bg-white">
-                  {Object.entries(latestGame)
+                  {Object.entries(latest)
                     .filter(([k]) => k !== 'date' && k !== 'opponent')
                     .map(([k, v]) => (
                       <td key={k} className="px-2 py-1 text-center border text-black">
@@ -108,6 +114,7 @@ export default function PlayerPage({ params }: { params: { id: string } }) {
       {/* 시즌 누적 성적 */}
       {stats && (
         <div className="overflow-x-auto">
+          <h2 className="text-base font-semibold text-white-800 mb-3">🏟️ 1군 시즌 성적</h2>
           <table className="w-full text-sm border border-gray-300">
             <thead className="bg-gray-100">
               <tr>
@@ -134,7 +141,35 @@ export default function PlayerPage({ params }: { params: { id: string } }) {
           </table>
         </div>
       )}
-
+{futuresStats && (
+  <div className="overflow-x-auto mt-6">
+    <h2 className="text-base font-semibold text-white-800 mb-3">🏟️ 2군 시즌 성적</h2>
+    <table className="w-full text-sm border border-gray-300">
+      <thead className="bg-gray-100">
+        <tr>
+          {Object.keys(futuresStats)
+            .filter(k => !['player', 'playerId', 'year'].includes(k))
+            .map(key => (
+              <th key={key} className="px-2 py-1 border text-xs text-gray-600 font-medium">
+                {key.toUpperCase()}
+              </th>
+            ))}
+        </tr>
+      </thead>
+      <tbody>
+        <tr className="bg-white">
+          {Object.entries(futuresStats)
+            .filter(([k]) => !['player', 'playerId', 'year'].includes(k))
+            .map(([k, v]) => (
+              <td key={k} className="px-2 py-1 text-center border text-black">
+                {v ?? '-'}
+              </td>
+            ))}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+)}
       {/* 📰 뉴스 섹션 */}
       {articles.length > 0 && (
         <div className="mt-8">

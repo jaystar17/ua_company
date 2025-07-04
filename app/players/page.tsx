@@ -12,13 +12,66 @@ type Player = {
   kboId: string;
 };
 
+type GameLog = {
+  date: string;
+  pa?: string;
+  ab?: string;
+  h?: string;
+  hr?: string;
+  rbi?: string;
+  ip?: string;
+  er?: string;
+  so?: string;
+};
+
+function getYesterdayMMDD(): string {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return `${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+}
+
 export default function HomePage() {
   const [players, setPlayers] = useState<Player[]>([]);
+  const [highlights, setHighlights] = useState<string[]>([]);
 
   useEffect(() => {
     fetch('/players.json')
       .then((res) => res.json())
-      .then(setPlayers);
+      .then(async (data: Player[]) => {
+        setPlayers(data);
+
+        const yesterday = getYesterdayMMDD();
+        const summary: string[] = [];
+
+        for (const player of data) {
+          const isPitcher = player.position.includes('투수');
+          const path = `/gameLogs/${isPitcher ? 'pitcher' : 'hitter'}_${player.kboId}.json`;
+
+          try {
+            const res = await fetch(path);
+            if (!res.ok) continue;
+
+            const game: GameLog = await res.json();
+            if (game.date !== yesterday) continue;
+
+            if (isPitcher && Number(game.ip ?? 0) > 0) {
+              summary.push(
+                `${player.name} · ${game.ip}이닝 ${game.er ?? 0}자책 ${game.so ?? 0}K`
+              );
+            } else if (!isPitcher && Number(game.pa ?? 0) > 0) {
+              summary.push(
+                `${player.name} · ${game.ab ?? 0}타수 ${game.h ?? 0}안타 ${
+                  Number(game.hr) > 0 ? `${game.hr}홈런 ` : ''
+                }${game.rbi ?? 0}타점`
+              );
+            }
+          } catch {
+            // pass
+          }
+        }
+
+        setHighlights(summary);
+      });
   }, []);
 
   const counts = {
@@ -30,6 +83,18 @@ export default function HomePage() {
 
   return (
     <main className="p-4 max-w-6xl mx-auto text-white-900">
+      {/* ✅ 어제 경기 요약 - 최상단 */}
+      {highlights.length > 0 && (
+        <div className="mb-6 text-gray-800">
+          <h2 className="text-xl font-bold mb-2">📰 어제 경기 요약</h2>
+          <ul className="list-disc list-inside text-sm space-y-1">
+            {highlights.map((line, idx) => (
+              <li key={idx}>{line}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* ✅ 메인으로 가기 버튼 */}
       <div className="mb-4">
         <Link
@@ -40,6 +105,7 @@ export default function HomePage() {
         </Link>
       </div>
 
+      {/* ✅ 선수 수 요약 + 관리자 링크 */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold mb-2">📋 선수 명단</h1>
         <p className="text-gray-700 font-medium text-lg">
@@ -58,6 +124,7 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* ✅ 선수 목록 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {players.map((p) => (
           <Link
