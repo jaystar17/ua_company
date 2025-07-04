@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UA Company Web App
 
-## Getting Started
+**KBO 선수 성적 수집 & 관리 웹 앱**
 
-First, run the development server:
+유에이컴퍼니 소속 선수들의 경기 기록을 자동으로 수집하고,
+웹 앱을 통해 확인, 관리할 수 있는 내부용 시스템입니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠 주요 기능
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- KBO 선수 목록 자동 수집 (`fetchAllPlayers.js`)
+- 타자 / 투수 성적 크롤링 및 저장 (`fetchHitter.js`, `fetchPitcher.js`)
+- 매일 자동 실행 가능 (GitHub Actions 또는 Cron)
+- 웹 앱을 통한 선수별 기록 시각화 (Next.js 기반)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 디렉토리 구조 (일부)
+scripts/
+├─ fetchAllPlayers.js
+├─ fetchHitter.js
+├─ fetchPitcher.js
+public/
+├─ stats/
+app/
+├─ players/

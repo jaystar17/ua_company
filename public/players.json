@@ -1,0 +1,372 @@
+[
+  {
+    "name": "노시환",
+    "birth": "2000.12.03",
+    "team": "한화",
+    "number": 8,
+    "position": "내야수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "69737"
+  },
+  {
+    "name": "조동욱",
+    "birth": "2004.11.02",
+    "team": "한화",
+    "number": 68,
+    "position": "투수",
+    "status": "1군",
+    "batsThrows": "좌투좌타",
+    "kboId": "54768"
+  },
+  {
+    "name": "원종혁",
+    "birth": "2005.08.27",
+    "team": "한화",
+    "number": 48,
+    "position": "투수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "54702"
+  },
+  {
+    "name": "이민우",
+    "birth": "1993.02.09",
+    "team": "한화",
+    "number": 27,
+    "position": "투수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "65616"
+  },
+  {
+    "name": "김건",
+    "birth": "2000.02.23",
+    "team": "한화",
+    "number": 56,
+    "position": "내야수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "69702"
+  },
+  {
+    "name": "박동원",
+    "birth": "1990.04.07",
+    "team": "LG",
+    "number": 27,
+    "position": "포수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "79365"
+  },
+  {
+    "name": "박시원",
+    "birth": "2006.04.12",
+    "team": "LG",
+    "number": 19,
+    "position": "투수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "55121"
+  },
+  {
+    "name": "김민수",
+    "birth": "1998.03.18",
+    "team": "LG",
+    "number": 16,
+    "position": "내야수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "67504"
+  },
+  {
+    "name": "김범석",
+    "birth": "2004.05.21",
+    "team": "LG",
+    "number": 55,
+    "position": "포수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "53144"
+  },
+  {
+    "name": "정보근",
+    "birth": "1999.08.31",
+    "team": "롯데",
+    "number": 42,
+    "position": "포수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "68518"
+  },
+  {
+    "name": "최준용",
+    "birth": "2001.10.10",
+    "team": "롯데",
+    "number": 56,
+    "position": "투수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "50556"
+  },
+  {
+    "name": "정현수",
+    "birth": "2001.05.10",
+    "team": "롯데",
+    "number": 57,
+    "position": "투수",
+    "status": "1군",
+    "batsThrows": "좌투좌타",
+    "kboId": "54537"
+  },
+  {
+    "name": "구승민",
+    "birth": "1990.06.12",
+    "team": "롯데",
+    "number": 22,
+    "position": "투수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "63543"
+  },
+  {
+    "name": "황성빈",
+    "birth": "1997.12.19",
+    "team": "롯데",
+    "number": 0,
+    "position": "외야수",
+    "status": "2군",
+    "batsThrows": "우투좌타",
+    "kboId": "50500"
+  },
+  {
+    "name": "정훈",
+    "birth": "1987.07.18",
+    "team": "롯데",
+    "number": 9,
+    "position": "내야수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "60523"
+  },
+  {
+    "name": "나균안",
+    "birth": "1998.03.16",
+    "team": "롯데",
+    "number": 43,
+    "position": "투수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "67539"
+  },
+  {
+    "name": "이승헌",
+    "birth": "1998.12.19",
+    "team": "롯데",
+    "number": 47,
+    "position": "투수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "68529"
+  },
+  {
+    "name": "박진형",
+    "birth": "1994.06.10",
+    "team": "롯데",
+    "number": 40,
+    "position": "투수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "63512"
+  },
+  {
+    "name": "전미르",
+    "birth": "2005.08.15",
+    "team": "롯데",
+    "number": 4,
+    "position": "투수",
+    "status": "상무",
+    "batsThrows": "우투우타",
+    "kboId": "54561"
+  },
+  {
+    "name": "한동희",
+    "birth": "1999.06.01",
+    "team": "롯데",
+    "number": 25,
+    "position": "내야수",
+    "status": "상무",
+    "batsThrows": "우투우타",
+    "kboId": "68525"
+  },
+  {
+    "name": "예진원",
+    "birth": "1999.03.16",
+    "team": "KIA",
+    "number": 108,
+    "position": "외야수",
+    "status": "2군",
+    "batsThrows": "좌투좌타",
+    "kboId": "68330"
+  },
+  {
+    "name": "유승철",
+    "birth": "1998.03.02",
+    "team": "KIA",
+    "number": 50,
+    "position": "투수",
+    "status": "부상",
+    "batsThrows": "우투양타",
+    "kboId": "67640"
+  },
+  {
+    "name": "이승재",
+    "birth": "2000.10.04",
+    "team": "KIA",
+    "number": 14,
+    "position": "투수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "51668"
+  },
+  {
+    "name": "김현수",
+    "birth": "2000.07.10",
+    "team": "KIA",
+    "number": 32,
+    "position": "투수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "69516"
+  },
+  {
+    "name": "김영웅",
+    "birth": "2003.08.24",
+    "team": "삼성",
+    "number": 30,
+    "position": "내야수",
+    "status": "1군",
+    "batsThrows": "우투좌타",
+    "kboId": "52430"
+  },
+  {
+    "name": "최지광",
+    "birth": "1998.03.13",
+    "team": "삼성",
+    "number": 11,
+    "position": "투수",
+    "status": "부상",
+    "batsThrows": "우투우타",
+    "kboId": "67421"
+  },
+  {
+    "name": "이재희",
+    "birth": "2001.10.11",
+    "team": "삼성",
+    "number": 59,
+    "position": "투수",
+    "status": "부상",
+    "batsThrows": "우투좌타",
+    "kboId": "51460"
+  },
+  {
+    "name": "원상현",
+    "birth": "2004.10.16",
+    "team": "KT",
+    "number": 63,
+    "position": "투수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "54063"
+  },
+  {
+    "name": "문용익",
+    "birth": "1995.02.04",
+    "team": "KT",
+    "number": 18,
+    "position": "투수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "67419"
+  },
+  {
+    "name": "김민",
+    "birth": "1999.04.14",
+    "team": "SSG",
+    "number": 41,
+    "position": "투수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "68043"
+  },
+  {
+    "name": "김찬형",
+    "birth": "1997.12.29",
+    "team": "SSG",
+    "number": 5,
+    "position": "내야수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "66917"
+  },
+  {
+    "name": "신범수",
+    "birth": "1998.01.25",
+    "team": "SSG",
+    "number": 25,
+    "position": "포수",
+    "status": "2군",
+    "batsThrows": "우투좌타",
+    "kboId": "66662"
+  },
+  {
+    "name": "전의산",
+    "birth": "2000.11.25",
+    "team": "SSG",
+    "number": 47,
+    "position": "내야수",
+    "status": "상무",
+    "batsThrows": "우투좌타",
+    "kboId": "50820"
+  },
+  {
+    "name": "배재환",
+    "birth": "1995.02.24",
+    "team": "NC",
+    "number": 61,
+    "position": "투수",
+    "status": "1군",
+    "batsThrows": "우투우타",
+    "kboId": "64995"
+  },
+  {
+    "name": "임형원",
+    "birth": "2001.09.15",
+    "team": "NC",
+    "number": 124,
+    "position": "투수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "50900"
+  },
+  {
+    "name": "김재열",
+    "birth": "1996.01.02",
+    "team": "NC",
+    "number": 32,
+    "position": "투수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "64580"
+  },
+  {
+    "name": "김명신",
+    "birth": "1993.11.29",
+    "team": "두산",
+    "number": 46,
+    "position": "투수",
+    "status": "2군",
+    "batsThrows": "우투우타",
+    "kboId": "67246"
+  }
+]
