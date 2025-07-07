@@ -18,6 +18,10 @@ scripts/
 ├─ fetchHitter.js
 ├─ fetchPitcher.js
 public/
-├─ stats/
+├─ data/
+├─ gameLogs/
 app/
-├─ players/
+├─ players/[id]/page.tsx
+├─ staff/page.tsx
+├─ admin/page.tsx
+
